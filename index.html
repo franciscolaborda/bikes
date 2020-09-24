@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Roboto+Condensed|Copse|Kameron|Changa+One|Iceland|Abel&display=swap" rel="stylesheet"> 
+</head>
+<style>
+
+.land {
+  /*fill: #ddd;*/
+  fill: #ccc;
+}
+
+.border {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.bubble {
+  fill: brown;
+  fill-opacity: .5;
+  stroke: #fff;
+  stroke-width: 0.2px;
+}
+
+.bubble :hover {
+  stroke: #000;
+}
+
+.legend circle {
+  fill: none;
+  stroke: #ccc;
+}
+
+.legend text {
+  fill: #777;
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+h1{
+  /*font-family: 'Changa One';*/
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 44px;
+  font-weight: 200;
+  letter-spacing: -2px;
+  margin: .3em 0 .1em 0;
+}
+
+h2{
+  font-family: "PT Sans", sans-serif;
+  font-size: 19px;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin: .3em 0 .5em 0;
+  text-align: left;
+}
+p{
+  font-family: 'Abel', sans-serif;
+}
+
+.year_label{
+  
+  font-size: 77px;
+  font-weight: 100;  
+
+}
+
+.available_label{  
+  font-size: 19px;
+  font-weight: 100;
+}
+</style>
+<body>
+  <div style="width: 900px; margin-left: auto; margin-right: auto;">
+    <h1>Stock de Ecobicis en CABA</h1>
+    <p>Mapa graficando la cantidad media de bicicletas disponibles en la ciudad de Buenos Aires por hora y día de la semana. Los datos fueron obtenidos de a través de la Api de Transporte de la Ciudad de Buenos Aires.</p>
+    <p>La presente visualización representa el stock de bicletas medio en las diferentes estaciones Ecobici a lo largo de una semana de Octubre. Los círculos de color rojo representan estaciones con bicis mientras que los azules estaciones sin.</p>
+    <p style="font-size: 14px; font-family: 'Lato', sans-serif;" target="blank">mapa inspirado en <a href="https://bost.ocks.org/mike/bubble-map/">Let’s Make a Bubble Map</a></p>
+    <h2>Seleccione un día:</h2>
+    <button onclick="updateGlobal('0')">Lunes</button>
+    <button onclick="updateGlobal('1')">Martes</button>
+    <button onclick="updateGlobal('2')">Miércoles</button>
+    <button onclick="updateGlobal('3')">Jueves</button>
+    <button onclick="updateGlobal('4')">Viernes</button>
+    <button onclick="updateGlobal('5')">Sábado</button>
+    <button onclick="updateGlobal('6')">Domingo</button>
+    <div id="map">
+    </div>
+    <h2 id='leyenda'></h2>
+  </div>
+
+</body>
+  <script src="d3.v3.min.js"></script>
+  <script src="d3-queue.min.js"></script>
+  <script src="topojson.v1.min.js"></script>
+  <script src="bike_animation.js"></script>
+</html>
+
